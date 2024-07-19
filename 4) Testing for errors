@@ -1,0 +1,51 @@
+
+// ******** way to test for errors ************
+
+
+// with function
+function expectError() {
+    const actual = sut.myFun('invalid parameter');
+}
+expect(expectError).toThrowError('Invalid data');
+
+
+// with arrow function
+expect(() => { const actual = sut.myFun('invalid parameter'); }).toThrowError('Invalid data');
+
+
+// with try catch block
+try {
+    const actual = sut.myFun('invalid parameter');
+} catch(error) {
+    expect(error).toBeInstanceOf(Error);
+    expect(error).toHaveProperty('message', 'Invalid data');
+}
+
+
+// Note: While calling function if it doesn't throw error out testcase still passes to catch that case
+
+// THERE IS AN OPEN ISSUE FOR "fail" THAT'S WHY THIS CODE WILL NOT WORK
+it('should throw error', () => {
+    try {
+        const actual = sut.myFun('invalid parameter');
+        fail('myFun should throw error for invalid arg!');
+    } catch(error) {
+        expect(error).toBeInstanceOf(Error);
+        expect(error).toHaveProperty('message', 'Invalid data');
+    }
+    
+})
+
+ // to workaround this jest issue below code will work using "done" and test case will fail if function doesn't return error
+
+it('should throw error', (done) => {
+    try {
+        const actual = sut.myFun('invalid parameter');
+        done('myFun should throw error for invalid arg!');
+    } catch(error) {
+        expect(error).toBeInstanceOf(Error);
+        expect(error).toHaveProperty('message', 'Invalid data'); 
+    }
+    
+})
+

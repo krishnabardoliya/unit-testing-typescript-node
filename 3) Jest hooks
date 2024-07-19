@@ -1,0 +1,24 @@
+Setup
+- to avoid initial setup duplication for all testcases
+- run relative to their "describe" block
+
+beforeEach(() => {
+    // it will execute before each case
+})
+
+afterEach(() => {
+    // teardown
+    // mostly used for clearing mocks
+})
+
+
+beforeAll(() => {
+    // Can use for integration testing
+    // only once before all test case runs
+    // ex: we can put database connection code which is long and take too much time
+})
+
+afterAll(() => {
+    // teardown
+    // mostly used for clearing mocks
+})

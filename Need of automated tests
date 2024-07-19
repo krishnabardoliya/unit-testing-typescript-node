@@ -1,0 +1,10 @@
+Why we need automated tests?
+
+> Peace of mind as a developer/tester
+> Catch bugs early
+    > Spend 1 hour for tests
+    > Win 3 hours of debugging
+> Unit tests impose high code quality
+    > If a unit is too difficult to test, the code quality should be improved
+> Prevent endless manual tests
+> Think big: a TODO list doesn't need tests

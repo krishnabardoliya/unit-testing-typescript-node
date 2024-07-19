@@ -1,0 +1,8 @@
+Structure of properly written unit test:
+AAA Principles:
+    - arrange ->  gather all info for test of what you are testing and what is the output
+    - act -> to call funtion or to do the operation to get actual
+    - assert -> check actual with expeted 
+
+    Setup
+    Tear down

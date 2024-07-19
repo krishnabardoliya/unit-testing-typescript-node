@@ -1,0 +1,25 @@
+1) F.I.R.S.T Principle
+F - Fast
+- unit test should be fast
+
+I- Isolated/Independent
+- Test should be isolated from other test and external environment.
+- no shared state between other test, test order not matter
+
+R - Repeateble
+- Same result with the same input
+ Challenge: where random date/current date time are used -> need to mock it
+- Test that writes to database should always cleanup
+
+S - Self validating
+- after test is finished it's result should be clear
+
+T -Thorough
+
+- Cover all cases/paths/scenarios
+- Happy case/ Bad path/Edge cases
+- Invalid input
+- Large values
+- 100% code coverage
+
+
