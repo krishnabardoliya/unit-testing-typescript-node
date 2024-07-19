@@ -4,6 +4,8 @@ Setup
 
 beforeEach(() => {
     // it will execute before each case
+    // ex: we can use to create new instance of a class that it will be independent from each other
+    // ex: const myDog = new Dog();  
 })
 
 afterEach(() => {

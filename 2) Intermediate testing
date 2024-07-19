@@ -1,6 +1,7 @@
 1) F.I.R.S.T Principle
 F - Fast
 - unit test should be fast
+Tests should be fast, but only as fast as possible while respecting the other principles. So some tests may be slow.
 
 I- Isolated/Independent
 - Test should be isolated from other test and external environment.

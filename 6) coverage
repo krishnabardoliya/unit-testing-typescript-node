@@ -1,0 +1,28 @@
+******* generate coverage report  *******
+
+=> jest.config.ts
+
+const config = {
+    // ...,
+    collectCoverage: true,
+    collectCoverageFrom: [
+        '<rootDir>/src/app/**/*.ts'
+    ]
+}
+
+=> package.json
+
+script: {
+    test: "jest --watch"
+}
+
+run: npm run test
+
+it will show coverage report in terminal, also creates coverage folder
+
+
+
+******* to ignore in coverage report use below line in code  *******
+Sometimes trivial or hard to test code can be excluded from coverage. This can be achieved with /* istanbul ignore next */
+
+/* istanbul ignore next */

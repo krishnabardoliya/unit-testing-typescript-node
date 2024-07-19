@@ -1,0 +1,29 @@
+********** test properties **********
+
+- only -> only  will run inside its block
+ ex: describe.only only run among other describe in the block
+ it.only - only run test under all describe block
+ test.only - only run test under all describe block 
+
+- skip - skip the test, syntax same as only
+ 
+- todo - if implementation is still not done and you want to define structur of the test sui, you can define todo 
+
+-  concurrent
+
+
+*********** Alias ***********
+
+it and test are alias and both are exactly same 
+xit - alis for it.skip - it will skip it
+fit - alias for it.only - only run among other test available in block 
+
+
+*********** Watch mode ***********
+
+script: {
+    test: "jest --watch"
+}
+
+
+npm run test => It will run test as soon as we make changes and save the test file
