@@ -1,0 +1,27 @@
+How we can use doubles?
+ex: instead of pointing to production database, we can point to test database.
+
+What are the test doubles?
+- pretend object that are used in place of real object for testing purpose.
+- Dummy object: Passed around but not used
+- Fakes: Simplified working implementation, it takes a shortcut
+ex: service access another, service that accesses another service like: login will just return true or false 
+
+stubs: imcomplete object used as arguments 
+
+mocks: preprogrammed with expectation
+
+spies: Tracks information about how a unit is called.
+
+mock modules:
+
+Note for Jest: mocks and spies have a lot in common
+
+
+===============================================
+Mocks: most used, most debated
+- the way we use them greatly influences the way we writes testcases.
+- If we need to write it too much, there is something wrong in our code
+- Testing/mocking style: London/Chicago
+
+

@@ -1,0 +1,145 @@
+// - imcomplete object that we use to execute test.
+// - don't use inside assertion, it will only help to run the test
+
+
+export type StringInfo = {
+    lowerCase: string,
+    upperCase: string,
+    characters: string[],
+    length: number,
+    extraInfo: Object | undefined
+}
+
+export function calculateComplexity(stringInfo: StringInfo) {
+    return Object.keys(stringInfo.extraInfo || {}).length * stringInfo.length
+}
+
+type LoggerServiceCallBack = (arg : string) => void;
+
+export function toUpperCaseWithCb(arg: string, callback: LoggerServiceCallBack) {
+    if(!arg) {
+        callback('Invalid argument!');
+        return;
+    }
+    callback(`called function with ${arg}`);
+    return arg.toUpperCase();
+}
+
+export class OtherStringUtils {
+
+    private callExternalservice() {
+
+    }
+    
+    public toUppercase(arg: string) {
+        return arg.toUpperCase();
+    }
+
+    public logString(arg: string) {
+        console.log(arg);
+    }
+}
+
+// *************** fakes ***************
+// fakes
+
+describe(`util test suit`, () => {
+    it(`toUpperCase - calls callback for invalid argument`, () => {
+         const actual = toUpperCaseWithCb('', () => {})
+         expect(actual).toBeUndefined();
+    })
+
+    it(`toUpperCase - calls callback for valid argument`, () => {
+        const actual = toUpperCaseWithCb('abc', () => {})
+        expect(actual).toBe('ABC ');
+   })    
+
+});
+
+// *************** mocks ***************
+// mocks
+
+describe(`util test suit`, () => {
+
+    // created callback mock
+    let cbArg:string[] = [];
+    let timesCalled = 0;
+
+    function callBackMock(arg: string) {
+        cbArg.push(arg);
+        timesCalled++;
+    }
+
+    afterEach(() => {
+        // clearing tracking fields
+        cbArg = [];
+        timesCalled = 0;
+    })
+
+    it(`Calls callback for invalid argument - Track calls mock`, () => {
+        const actual = toUpperCaseWithCb('', callBackMock)
+        expect(actual).toBeUndefined();
+        expect(cbArg).contain('Invalid argument!');
+        expect(timesCalled).toBe(1);
+    })
+
+    it(`Calls callback for valid argument - Track calls mock`, () => {
+        const actual = toUpperCaseWithCb('abc', callBackMock)
+        expect(actual).toBe('ABC');
+        expect(cbArg).toContain('called function with abc');
+        expect(timesCalled).toBe(1);
+   })    
+
+});
+
+
+// *************** Jest mocks ***************
+// jest mocks
+
+describe(`util test suit`, () => {
+
+    function callBackMock = Jest.fn();
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    })
+
+    it(`Calls callback for invalid argument - Track calls mock`, () => {
+        const actual = toUpperCaseWithCb('', callBackMock);
+        expect(actual).toBeUndefined();
+        expect(callBackMock).toBeCalledWith('Invalid argument!');
+        expect(callBackMock).toBeCalledTimes(1);
+    })
+
+    it(`Calls callback for valid argument - Track calls mock`, () => {
+        const actual = toUpperCaseWithCb('abc', () => {});
+        expect(actual).toBe('ABC');
+        expect(callBackMock).toBeCalledWith('called function with abc');
+        expect(callBackMock).toBeCalledTimes(1);
+   })    
+
+});
+
+// spices vs mocks:
+// - Spices are not directly injected into sut
+// - original fucntionality is preserved with spices
+// - spices usually tracks method calls
+
+
+// *************** spices ***************
+
+
+describe(`other test util with spices`, () => {
+
+   let sut: OtherStringUtils;
+
+   beforeEach(() => {
+    sut = new OtherStringUtils();
+   });
+
+   test('use spy to track calls', () => {
+        const toUpperCaseSpy = jest.spyOn(sut, )
+   })
+
+
+});
